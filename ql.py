@@ -110,12 +110,12 @@ def egreedy(prob, state):
 for metodo in ("random", "greedy", "egreedy"):
 
     actions = 0
-    episodes = 10000
+    episodes = 1000
     estado = 0
     Q = np.zeros((height * width, num_actions))
 
     for i in xrange(episodes):
-        state = getRndState()
+        state = estado
         while state != final_state:
             actions += 1
 
@@ -124,7 +124,6 @@ for metodo in ("random", "greedy", "egreedy"):
             else:
                 action = getNextAction(state,metodo)
 
-            action = getRndAction(state)
             y = getStateCoord(state)[0] + actions_vectors[action][0]
             x = getStateCoord(state)[1] + actions_vectors[action][1]
             new_state = getState(y, x)
